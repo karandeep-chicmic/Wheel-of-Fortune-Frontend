@@ -1,0 +1,23 @@
+<div class="wheel-container">
+  <div
+    class="wheel"
+    #wheel
+    [@spinState]="{
+      value: animationState,
+      params: { finalRotation: finalRotation }
+    }"
+  >
+    <div class="segment" *ngFor="let face of outcomes">
+      {{ face }}
+    </div>
+  </div>
+</div>
+
+<input
+  type="text"
+  [(ngModel)]="selectedOutcome"
+  placeholder="Enter the outcome (🍎, 🍌, 🍇, 🍉)"
+/>
+<button (click)="spinWheel()">Spin the Wheel</button>
+<button (click)="autoSpin()">auto Wheel</button>
+Enter the outcome (🍎, 🍌, 🍇, 🍉)

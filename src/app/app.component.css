@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&family=SUSE:wght@100..800&display=swap');
+* {
+  /* margin: 0; */
+  /* font-family: 'Oleo Script', cursive; */
+  /* font-family: "Playwrite NG Modern", cursive; */
+  /* font-optical-sizing: auto; */
+  /* background-color: black; */
+
+  /* font-family: "Nerko One", cursive;
+  font-weight: 10;
+  font-size: larger;
+  font-style: normal; */
+
+
+  font-family: "SUSE", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  overflow: hidden;
+}
+/* body {
+  overflow: hidden;
+} */
+
+.main-container {
+  overflow: auto;
+  height: 800px;
+}
+
+.validator-span {
+  color: red;
+  font-size: 12px;
+}

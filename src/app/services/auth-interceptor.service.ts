@@ -15,11 +15,10 @@ export class AuthInterceptorService implements HttpInterceptor {
     let authReq = req.clone();
     if (authToken) {
       authReq = req.clone({
-        headers: req.headers.set('token', authToken),
+        headers: req.headers.set('Authorization', `Bearer ${authToken}`),
       });
     }
     return next.handle(authReq);
   }
   constructor() {}
 }
-

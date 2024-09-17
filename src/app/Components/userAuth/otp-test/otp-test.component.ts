@@ -68,10 +68,11 @@ export class OtpTestComponent implements OnInit {
           sessionStorage.setItem('email', res.data.email);
           sessionStorage.setItem('token', res.data.token);
           sessionStorage.setItem('userId', res.data.userId);
+          sessionStorage.setItem('role', res.data.role);
 
           this.sweetAlert.success(res.message);
           this.commonFunctions.showNavbar.next(true);
-          this.router.navigate([ROUTES_UI.WHEEL_OF_FORTUNE]);
+          this.router.navigate([ROUTES_UI.WHEEL_LISTING_PAGE]);
         },
         error: (err) => {
           console.log('ERROR is:', err);

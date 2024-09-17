@@ -1,10 +1,18 @@
 import { Routes } from '@angular/router';
 import { ROUTES_UI } from './constants';
 import { LoginComponent } from './Components/userAuth/login/login.component';
-import { canActivate, canActivateLogin } from './services/auth.guard';
+import {
+  canActivate,
+  canActivateAdmin,
+  canActivateLogin,
+} from './services/auth.guard';
 import { RegisterComponent } from './Components/userAuth/register/register.component';
 import { OtpTestComponent } from './Components/userAuth/otp-test/otp-test.component';
-import { WheelOfFortuneComponent } from './Components/wheel-of-fortune/wheel-of-fortune.component';
+import { WheelOfFortuneComponent } from './Components/wheelComponents/wheel-of-fortune/wheel-of-fortune.component';
+import { WheelListingPageComponent } from './Components/wheelComponents/wheel-listing-page/wheel-listing-page.component';
+import { PageNotFoundComponent } from './Components/home/page-not-found/page-not-found.component';
+import { AdminPanelComponent } from './Components/adminPages/admin-panel/admin-panel.component';
+import { CreateWheelComponent } from './Components/adminPages/create-wheel/create-wheel.component';
 
 export const routes: Routes = [
   { path: ROUTES_UI.DEFAULT, pathMatch: 'full', redirectTo: ROUTES_UI.LOGIN },
@@ -27,5 +35,24 @@ export const routes: Routes = [
     path: ROUTES_UI.WHEEL_OF_FORTUNE,
     component: WheelOfFortuneComponent,
     canActivate: [canActivate],
-  }
+  },
+  {
+    path: ROUTES_UI.WHEEL_LISTING_PAGE,
+    component: WheelListingPageComponent,
+    canActivate: [canActivate],
+  },
+  {
+    path: ROUTES_UI.ADMIN_DASHBOARD,
+    component: AdminPanelComponent,
+    canActivate: [canActivateAdmin],
+  },
+  {
+    path: ROUTES_UI.CREATE_WHEEL,
+    component: CreateWheelComponent,
+    canActivate: [canActivateAdmin],
+  },
+  {
+    path: ROUTES_UI.WILDCARD_ROUTE,
+    component: PageNotFoundComponent,
+  },
 ];

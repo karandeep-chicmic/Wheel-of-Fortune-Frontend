@@ -1,7 +1,13 @@
-<br />
-<br />
+
 <br />
 <div class="wrapper fadeInDown p-2">
+  <div class="head-image-div mb-5">
+    <img
+    class="head-image"
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQmf2i8B4vyTAzGC5ComBhMdpqQf0PlqZoUA&s"
+    alt=""
+  />
+  </div>
   <div id="formContent">
     <!-- Login Form -->
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -31,26 +37,26 @@
         name="login"
         placeholder="username"
       />
-      
+
       <!-- Validations Start -->
       <br /><span *ngIf="form.controls['username'].touched">
         <span
-        class="validator-span"
-        *ngIf="form.controls['username']?.errors?.['required']"
+          class="validator-span"
+          *ngIf="form.controls['username']?.errors?.['required']"
         >
-        This field is Required</span
-        >
-        <span
-        class="validator-span"
-        *ngIf="form.controls['username']?.errors?.['minlength']"
-        >
-        Minimum length for password is 8 characters</span
+          This field is Required</span
         >
         <span
-        class="validator-span"
-        *ngIf="form.controls['username']?.errors?.['maxlength']"
+          class="validator-span"
+          *ngIf="form.controls['username']?.errors?.['minlength']"
         >
-        Maximum Length is 20 characters</span
+          Minimum length for password is 8 characters</span
+        >
+        <span
+          class="validator-span"
+          *ngIf="form.controls['username']?.errors?.['maxlength']"
+        >
+          Maximum Length is 20 characters</span
         >
       </span>
       <!-- Validations End -->
@@ -79,7 +85,6 @@
       </span>
       <!-- Validations End -->
 
-
       <input
         type="password"
         id="password"
@@ -92,20 +97,19 @@
       <!-- Validations Start -->
       <br /><span *ngIf="form.controls['password'].touched">
         <span
-        class="validator-span"
-        *ngIf="form.controls['password']?.errors?.['required']"
+          class="validator-span"
+          *ngIf="form.controls['password']?.errors?.['required']"
         >
-        This field is Required</span
+          This field is Required</span
         >
       </span>
       <!-- Validations End -->
 
       <input
         type="file"
-        class="input mb-4 mt-3 ml-4 fadeIn third "
+        class="input mb-4 mt-3 ml-4 fadeIn third"
         (input)="photoUpload($event)"
       />
-     
 
       <input type="submit" class="fadeIn fourth" value="Log In" />
     </form>

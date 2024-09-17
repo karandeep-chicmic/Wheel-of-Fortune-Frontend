@@ -71,10 +71,11 @@ export class LoginComponent {
       next: (data: any) => {
         sessionStorage.setItem('token', data.data.token);
         sessionStorage.setItem('userId', data.data.userId);
+        sessionStorage.setItem("role", data.data.role )
 
         this.commonFunctions.showNavbar.next(true);
 
-        this.router.navigate([ROUTES_UI.WHEEL_OF_FORTUNE]);
+        this.router.navigate([ROUTES_UI.WHEEL_LISTING_PAGE]);
       },
       error: (err) => {
         if (err.status === 421) {

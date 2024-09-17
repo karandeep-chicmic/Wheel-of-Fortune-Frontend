@@ -1,0 +1,76 @@
+<!-- <div class="wheel-container">
+    <div class="wheel">
+      <div class="segment" *ngFor="let segment of wheelSegments; let i = index">
+        <button (click)="selectSymbol(i)">
+          <img *ngIf="symbols[i]" [src]="symbols[i]" alt="symbol" />
+          <span *ngIf="!symbols[i]">+</span>
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+<!-- Popup or modal for selecting a symbol -->
+<!-- <div class="symbol-selector" *ngIf="isSymbolSelectorOpen">
+    <h3>Select a Symbol</h3>
+    <div class="symbol-options">
+      <img *ngFor="let symbol of availableSymbols" [src]="symbol" (click)="chooseSymbol(symbol, selectedSegmentIndex)" alt="symbol" />
+    </div>
+    <button (click)="closeSymbolSelector()">Close</button>
+  </div>
+   -->
+
+<!-- <fieldset class="ui-wheel-of-fortune">
+    <ul>
+      <li>$1000</li>
+      <li>$2000</li>
+      <li>$3000</li>
+      <li>$4000</li>
+      <li>$5000</li>
+      <li>$6000</li>
+      <li>$7000</li>
+      <li>$8000</li>
+      <li>$9000</li>
+      <li>$10000</li>
+      <li>$11000</li>
+      <li>$12000</li>
+    </ul>
+    
+  </fieldset> -->
+
+<div
+  style="
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 1px solid blue;
+    overflow: hidden;
+  "
+>
+  <div
+    class="sector"
+    style="background: red; transform: rotate(0deg); z-index: 1"
+  ></div>
+  <div
+    class="sector"
+    style="background: rgb(18, 228, 36); transform: rotate(60deg); z-index: 2"
+  ></div>
+  <div
+    class="sector"
+    style="background: rgb(28, 50, 195); transform: rotate(120deg); z-index: 3"
+  ></div>
+  <div
+    class="sector"
+    style="background: rgb(224, 227, 39); transform: rotate(180deg); z-index: 4"
+  ></div>
+  <div
+    class="sector"
+    style="background: rgb(153, 10, 151); transform: rotate(240deg); z-index: 5"
+  ></div>
+  <div
+    class="sector"
+    style="background: rgb(25, 220, 142); transform: rotate(300deg); z-index: 6"
+  ></div>
+</div>

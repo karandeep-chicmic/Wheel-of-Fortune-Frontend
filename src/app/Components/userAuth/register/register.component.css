@@ -10,7 +10,7 @@ body {
 }
 
 a {
-  color: #92badd;
+  color: #475766;
   display: inline-block;
   text-decoration: none;
   font-weight: 400;
@@ -28,8 +28,8 @@ h2 {
 
 /* STRUCTURE */
 .validator-span{
-  color: red;
-  font-size: 12px;
+  color: rgb(117, 211, 134);;
+  font-size: 14px;
 }
 .wrapper {
   display: flex;
@@ -44,7 +44,7 @@ h2 {
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
-  background: #bdbaba;
+  background: rgb(31 45 57);;
   padding: 30px;
   width: 90%;
   max-width: 450px;
@@ -80,7 +80,7 @@ h2.active {
 input[type="button"],
 input[type="submit"],
 input[type="reset"] {
-  background-color: #56baed;
+  background-color: #555e72;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -104,7 +104,7 @@ input[type="reset"] {
 input[type="button"]:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover {
-  background-color: #39ace7;
+  background-color: #c8c8c8;
 }
 
 input[type="button"]:active,
@@ -291,7 +291,7 @@ input[type="password"]:placeholder {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #56baed;
+  background-color: #0f1f28;
   content: "";
   transition: width 0.2s;
 }

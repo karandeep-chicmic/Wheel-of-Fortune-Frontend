@@ -46,7 +46,7 @@ export class RegisterComponent {
       this.sweetAlert.error('Please fill all the fields correctly');
       return;
     }
-debugger
+
 
     const formData = new FormData();
     formData.append('name', this.form.get('name')?.value);

@@ -1,0 +1,15 @@
+<!-- wheels.component.html -->
+<h1>Select wheel to play</h1>
+<div class="wheels-list">
+    <div
+      *ngFor="let wheel of wheelsData"
+      class="wheel-item"
+      [routerLink]="['/wheel', wheel._id]"
+      [ngClass]="{'unlocked': wheel.accessType === 1, 'locked': wheel.accessType !== 1}"
+    >
+      <h3>{{ wheel.wheelName }}</h3>
+      <p>{{ wheel.description }}</p>
+      <span class="status">{{ wheel.accessType === 1 ? 'Unlocked' : 'Locked' }}</span>
+    </div>
+  </div>
+  

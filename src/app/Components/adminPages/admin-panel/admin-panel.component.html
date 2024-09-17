@@ -1,0 +1,74 @@
+<!-- admin-panel.component.html -->
+<div class="admin-panel">
+  <div class="head-image-div">
+    <img
+      class="head-image"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXUsVxyctiTonmf4YygWNTGrqfceD_uiMiNw&s"
+      alt=""
+    />
+  </div>
+  <h1 class="heading">Admin Panel</h1>
+
+  <div class="grid-container">
+    <!-- First Row: Statistics Section -->
+    <div class="stats-section">
+      <span>Total Wins: {{ totalWins }}</span>
+      <span>Total Loses: {{ totalLosses }}</span>
+      <span>Admin Income: {{ adminIncome }}</span>
+      <span>Total Games: {{ totalGames }} </span>
+    </div>
+
+    <!-- Second Row: Symbols and Wheels Section -->
+    <div class="section symbols-section">
+      <h3>Symbols</h3>
+      <div class="button-group">
+        <button>Create Symbol</button>
+        <button>Update or Delete Symbol</button>
+      </div>
+    </div>
+
+    <div class="section wheels-section">
+      <h3>Wheels</h3>
+      <div class="button-group">
+        <button (click)="navigateToPage(1)">Create Wheels</button>
+        <button>Update or Delete Wheels</button>
+      </div>
+    </div>
+
+    <!-- Third Row: RTP and Transaction Sections -->
+    <div class="section rtp-section">
+      <h3>RTP Controls</h3>
+      <div class="button-group">
+        <span>GLOBAL RTP: </span>
+        <button>Increase RTP</button>
+        <button>Decrease RTP</button>
+      </div>
+    </div>
+
+    <div class="section transactions-section">
+      <h3>Transaction Details</h3>
+      <div class="button-group">
+        <button>Show All Transactions</button>
+        <button>Give Free Credits</button>
+        <button>Credits Details</button>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <div class="admin-head">
+        <h3>Admin Settings</h3>
+        <div class="button-group">
+          <button>Add Admin</button>
+        </div>
+      </div>
+      <div class="admin-listing">
+        <div class="admins">
+          <span>Admin 1</span>
+        </div>
+        <div class="admins">
+          <span>Admin 2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

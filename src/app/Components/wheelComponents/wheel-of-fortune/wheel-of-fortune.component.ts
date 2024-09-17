@@ -7,8 +7,12 @@ import {
   trigger,
 } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ApiCallsService } from '../../../services/api-calls.service';
+import { ActivatedRoute } from '@angular/router';
+import { SweetAlertService } from '../../../services/sweet-alert.service';
+import { MESSAGES } from '../../../constants';
 
 @Component({
   selector: 'app-wheel-of-fortune',
@@ -31,9 +35,18 @@ import { FormsModule } from '@angular/forms';
     ]),
   ],
 })
-export class WheelOfFortuneComponent {
+export class WheelOfFortuneComponent implements OnInit {
   constructor(private renderer: Renderer2) {}
+
   @ViewChild('wheel') wheel: any;
+
+  apiCalls: ApiCallsService = inject(ApiCallsService);
+  route: ActivatedRoute = inject(ActivatedRoute);
+  sweetAlert: SweetAlertService = inject(SweetAlertService);
+
+  wheelId: string = '';
+  wheelsData: any;
+
 
   outcomes = ['🍎', '🍌', '🍇', '🍉'];
   segmentAngle = 360 / this.outcomes.length;
@@ -43,6 +56,22 @@ export class WheelOfFortuneComponent {
   animationState = 'idle';
   index = 1;
   timerId: any;
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.wheelId = params.get('wheelId');
+    });
+    this.apiCalls.findWheelById(this.wheelId).subscribe({
+      next: (data: any) => {
+        console.log(data);
+
+        this.wheelsData = data.data.wheels;
+      },
+      error: () => {
+        this.sweetAlert.error(MESSAGES.ERROR_MESSAGES.CANT_GET_WHEEL);
+      },
+    });
+  }
 
   autoSpin() {
     this.timerId = setInterval(() => {

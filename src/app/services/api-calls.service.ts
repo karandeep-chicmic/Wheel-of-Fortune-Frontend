@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { API_ROUTES } from '../constants';
 import { user } from '../interfaces/user.interface';
+import { symbols } from '../interfaces/symbol.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +16,27 @@ export class ApiCallsService {
   loginUser(userData: user) {
     return this.http.post(API_ROUTES.BASE_URL + API_ROUTES.LOGIN, userData);
   }
-
   registerUser(userData: FormData) {
     return this.http.post(API_ROUTES.BASE_URL + API_ROUTES.REGISTER, userData);
   }
-
   getUserRole() {
     return this.http.get(API_ROUTES.BASE_URL + API_ROUTES.ROLE);
+  }
+  updateRole(userId: string) {
+    return this.http.put(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.UPDATE_ROLE}?id=${userId}`,
+      {}
+    );
+  }
+  getAdmins(index: number, limit: number) {
+    return this.http.get(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.ADMIN}?limit=${limit}&index=${index}`
+    );
+  }
+  searchUser(searchString: string, index: number, limit: number) {
+    return this.http.get(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.ADMIN}?limit=${limit}&index=${index}&searchString=${searchString}`
+    );
   }
 
   // otp verification
@@ -36,6 +51,40 @@ export class ApiCallsService {
       email: email,
       otp: otp,
     });
+  }
+
+  // file upload
+  fileUpload(formData: FormData) {
+    return this.http.post(
+      API_ROUTES.BASE_URL + API_ROUTES.FILE_UPLOAD,
+      formData
+    );
+  }
+
+  // symbols Apis
+  addSymbol(symbolData: symbols) {
+    return this.http.post(API_ROUTES.BASE_URL + API_ROUTES.SYMBOL, symbolData);
+  }
+  getSymbols(index: number, limit: number) {
+    return this.http.get(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.SYMBOL}?index=${index}&limit=${limit}`
+    );
+  }
+  deleteSymbol(symbolId: string) {
+    return this.http.delete(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.SYMBOL}/${symbolId}`
+    );
+  }
+  getSymbolDetail(symbolId: string) {
+    return this.http.get(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.SYMBOL}?id=${symbolId}`
+    );
+  }
+  updateSymbol(symbolId: string, symbolData: symbols) {
+    return this.http.put(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.SYMBOL}?id=${symbolId}`,
+      symbolData
+    );
   }
 
   // wheel apis

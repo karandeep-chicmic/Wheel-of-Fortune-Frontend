@@ -1,0 +1,98 @@
+<div class="main-container">
+  <div class="container">
+    <div class="heading"><h1 class="mt-4">{{headingText}} Symbol for wheel</h1></div>
+    <form class="card mt-4 p-4" [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="text"
+          formControlName="name"
+          placeholder="Symbol name"
+        />
+      </div>
+
+      <div class="form-group">
+        <select class="form-control" (change)="onSelectChange($event)">
+          <option value="" disabled selected>Select Symbol Type</option>
+          <option *ngFor="let symbolType of symbolTypes" [value]="symbolType.value">{{ symbolType.name }}</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="number"
+          formControlName="amountPayout"
+          placeholder="Symbol amountPayout"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          class="form-control"
+          type="number"
+          formControlName="probability"
+          placeholder="Symbol probability"
+        />
+      </div>
+
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          formControlName="description"
+          type="text"
+          placeholder="This is the description for your Symbol !!"
+        ></textarea>
+        <!-- Validations Start -->
+        <br /><span *ngIf="form.controls['description'].touched">
+          <span
+            class="validator-span"
+            *ngIf="form.controls['description']?.errors?.['required']"
+          >
+            This Above field is Required</span
+          >
+          <span
+            class="validator-span"
+            *ngIf="form.controls['description']?.errors?.['minlength']"
+          >
+            minimum length is 8 characters for caption</span
+          >
+          <span
+            class="validator-span"
+            *ngIf="form.controls['description']?.errors?.['maxlength']"
+          >
+            Max length is 200 characters for caption</span
+          >
+        </span>
+        <!-- Validations End -->
+      </div>
+
+      <span class="ml-4 upload-img">Upload Image</span><br>
+      <div class="form-group">
+        <div class="image-preview mb-3" *ngIf="imagePreview">
+          <img
+            [src]="imagePreview"
+            alt="Image Preview"
+            class="img-fluid rounded"
+          />
+        </div>
+        <input
+        
+          class="form-control-file"
+          type="file"
+          (change)="onFileChange($event)"
+          placeholder="This is the image for your Posts !!"
+        />
+      </div>
+
+      
+      <div class="row">
+        <div class="col-12">
+          <button class="btn btn-primary btn-block">{{headingText}} Symbol</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

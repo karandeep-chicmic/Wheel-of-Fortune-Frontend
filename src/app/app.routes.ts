@@ -13,9 +13,13 @@ import { WheelListingPageComponent } from './Components/wheelComponents/wheel-li
 import { PageNotFoundComponent } from './Components/home/page-not-found/page-not-found.component';
 import { AdminPanelComponent } from './Components/adminPages/admin-panel/admin-panel.component';
 import { CreateWheelComponent } from './Components/adminPages/create-wheel/create-wheel.component';
+import { CreateSymbolsComponent } from './Components/adminPages/create-symbols/create-symbols.component';
+import { UpdateOrDeleteSymbolComponent } from './Components/adminPages/update-or-delete-symbol/update-or-delete-symbol.component';
 
 export const routes: Routes = [
   { path: ROUTES_UI.DEFAULT, pathMatch: 'full', redirectTo: ROUTES_UI.LOGIN },
+
+  // User Routes
   {
     path: ROUTES_UI.LOGIN,
     component: LoginComponent,
@@ -41,6 +45,8 @@ export const routes: Routes = [
     component: WheelListingPageComponent,
     canActivate: [canActivate],
   },
+
+  // Admin Routes
   {
     path: ROUTES_UI.ADMIN_DASHBOARD,
     component: AdminPanelComponent,
@@ -49,6 +55,16 @@ export const routes: Routes = [
   {
     path: ROUTES_UI.CREATE_WHEEL,
     component: CreateWheelComponent,
+    canActivate: [canActivateAdmin],
+  },
+  {
+    path: ROUTES_UI.SYMBOL_CREATE,
+    component: CreateSymbolsComponent,
+    canActivate: [canActivateAdmin],
+  },
+  {
+    path: ROUTES_UI.SYMBOL_UPDATE_OR_DELETE,
+    component: UpdateOrDeleteSymbolComponent,
     canActivate: [canActivateAdmin],
   },
   {

@@ -1,0 +1,157 @@
+/* Set the page background to black */
+.heading {
+  text-align: center;
+  margin-top: 20px;
+  font-family: "Ribeye Marrow", serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 40px;
+}
+
+.symbols-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 30px;
+}
+
+.symbol-card {
+  background: linear-gradient(145deg, #2a2a2a, #1c1c1c);
+  border-radius: 15px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  width: 18%; /* Ensure the width allows 5 cards per row */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  margin-left: 7px;
+}
+
+.symbol-card:hover {
+  transform: scale(1.05);
+}
+
+.symbol-image {
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.symbol-card:hover .symbol-image {
+  transform: scale(1.05);
+}
+
+.symbol-details h3 {
+  font-size: 1.4rem;
+  margin: 15px 0 10px;
+  letter-spacing: 1px;
+  color: #f9f9f9;
+  text-transform: uppercase;
+}
+
+.symbol-details p {
+  font-size: 1rem;
+  color: #dcdcdc;
+  margin: 0 0 10px;
+}
+
+.symbol-info {
+  font-size: 0.85rem;
+  color: #b5b5b5;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+}
+
+.symbol-info span {
+  font-weight: 500;
+}
+
+.symbol-info span:first-child {
+  color: #ffc107;
+}
+
+.symbol-info span:last-child {
+  color: #1de9b6;
+}
+
+.symbol-card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #ff6ec4, #7873f5);
+  filter: blur(8px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 15px;
+}
+
+.symbol-card:hover::before {
+  opacity: 1;
+}
+
+.symbol-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.update-btn {
+  background-color: #1de9b6;
+  color: #fff;
+}
+
+.update-btn:hover {
+  background-color: #17b392;
+  transform: scale(1.05);
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .symbol-card {
+    width: 30%; /* Adjust for smaller screen */
+  }
+}
+
+@media (max-width: 768px) {
+  .symbol-card {
+    width: 45%; /* Adjust to fit 2 symbols per row */
+  }
+}
+
+@media (max-width: 480px) {
+  .symbol-card {
+    width: 90%; /* Single symbol per row on very small screens */
+  }
+}

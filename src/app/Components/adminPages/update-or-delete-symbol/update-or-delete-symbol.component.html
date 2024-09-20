@@ -1,0 +1,19 @@
+<div class="heading"><h1>Update or Delete Wheel Symbols</h1></div>
+<div class="symbols-container">
+    <div *ngFor="let symbol of symbolsData" class="symbol-card">
+      <img [src]="'http://192.180.0.84:5000/'+symbol.image" alt="{{ symbol.name }}" class="symbol-image" />
+      <div class="symbol-details">
+        <h3>{{ symbol.name }}</h3>
+        <p>{{ symbol.description }}</p>
+        <div class="symbol-info">
+          <span>Type: {{ symbol.symbolsType }}</span>
+          <span *ngIf="symbol.amountPayout">Payout: {{ symbol.amountPayout }}</span>
+        </div>
+      </div>
+      <!-- Buttons for Update and Delete -->
+      <div class="symbol-actions">
+        <button class="btn btn-secondary" (click)="updateSymbol(symbol._id)">Update</button>
+        <button class="btn btn-danger" (click)="deleteSymbol(symbol._id)">Delete</button>
+      </div>
+    </div>
+  </div>

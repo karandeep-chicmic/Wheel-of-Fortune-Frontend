@@ -22,8 +22,8 @@
     <div class="section symbols-section">
       <h3>Symbols</h3>
       <div class="button-group">
-        <button>Create Symbol</button>
-        <button>Update or Delete Symbol</button>
+        <button (click)="navigateToPage(2)">Create Symbol</button>
+        <button (click)="navigateToPage(3)">Update or Delete Symbol</button>
       </div>
     </div>
 
@@ -58,17 +58,43 @@
       <div class="admin-head">
         <h3>Admin Settings</h3>
         <div class="button-group">
-          <button>Add Admin</button>
+          <button (click)="addAdmin()">Add Admin</button>
         </div>
       </div>
+
       <div class="admin-listing">
-        <div class="admins">
-          <span>Admin 1</span>
-        </div>
-        <div class="admins">
-          <span>Admin 2</span>
+        <div class="admins" *ngFor="let admin of adminDetails.adminData">
+          <div class="admin-info">
+            <span class="admin-name">{{ admin.name }}</span
+            ><br />
+            <span class="admin-email">{{ admin.email }}</span>
+            <span class="admin-username">({{ admin.username }})</span>
+          </div>
+          <div class="toggle-container mb-3 mt-4">
+            <label class="switch">
+              <input
+                type="checkbox"
+                (change)="onToggle(admin._id, admin)"
+                [checked]="admin.role === 1 ? true : false"
+              />
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<app-modal [isVisible]="showModal">
+  <div>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="search"
+      (input)="onSearchChange($event)"
+    />
+  </div>
+</app-modal>
+
+<!-- formControlName="searchText" -->

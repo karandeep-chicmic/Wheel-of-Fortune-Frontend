@@ -20,6 +20,7 @@ export interface user {
   dateOfBirth?: Date | string;
   created?: string | Date;
   profileImagePath?: string;
+  role?: number;
 }
 
 export interface forgotPass {

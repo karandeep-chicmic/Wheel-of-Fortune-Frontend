@@ -96,6 +96,11 @@ export class ApiCallsService {
   findWheelById(id: string) {
     return this.http.get(`${API_ROUTES.BASE_URL}${API_ROUTES.WHEELS}?id=${id}`);
   }
+  deleteWheel(wheelId: string) {
+    return this.http.delete(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.WHEELS}/${wheelId}`
+    );
+  }
 
   // admin apis
   getGameDetails() {

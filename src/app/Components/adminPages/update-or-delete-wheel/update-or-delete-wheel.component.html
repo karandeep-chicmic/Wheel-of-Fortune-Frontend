@@ -1,0 +1,25 @@
+<div class="heading">
+  <h1>Wheels</h1>
+</div>
+<div class="wheels-list">
+  <div
+    *ngFor="let wheel of wheelsData"
+    class="wheel-item"
+    [ngClass]="{
+      unlocked: wheel.accessType === 1,
+      locked: wheel.accessType !== 1
+    }"
+  >
+    <h3>{{ wheel.wheelName }}</h3>
+    <p>{{ wheel.description }}</p>
+    <span class="status">{{
+      wheel.accessType === 1 ? "Unlocked" : "Locked"
+    }}</span>
+    <div class="p-2 action-btns">
+      <button class="btn btn-secondary" (click)="updateWheel(wheel._id)">
+        Update Wheel
+      </button>
+      <button class="btn btn-danger" (click)="deleteWheel(wheel._id)">Delete Wheel</button>
+    </div>
+  </div>
+</div>

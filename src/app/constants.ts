@@ -19,7 +19,8 @@ export const ROUTES_UI = {
   ADMIN_DASHBOARD: "adminDashboard",
   CREATE_WHEEL: "createWheel",
   SYMBOL_CREATE: "createSymbol",
-  SYMBOL_UPDATE_OR_DELETE: "updateOrDelete"
+  SYMBOL_UPDATE_OR_DELETE: "updateOrDelete",
+  WHEEL_UPDATE_OR_DELETE: "updateWheel"
 };
 
 export const API_ROUTES = {

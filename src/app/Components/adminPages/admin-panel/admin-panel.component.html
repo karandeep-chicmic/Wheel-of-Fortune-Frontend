@@ -31,7 +31,7 @@
       <h3>Wheels</h3>
       <div class="button-group">
         <button (click)="navigateToPage(1)">Create Wheels</button>
-        <button>Update or Delete Wheels</button>
+        <button (click)="navigateToPage(4)">Update or Delete Wheels</button>
       </div>
     </div>
 
@@ -94,6 +94,27 @@
       placeholder="search"
       (input)="onSearchChange($event)"
     />
+
+    <div class="admin-listing">
+      <div class="admins" *ngFor="let admin of userSearchDetails.adminData">
+        <div class="admin-info">
+          <span class="admin-name">{{ admin.name }}</span
+          ><br />
+          <span class="admin-email">{{ admin.email }}</span>
+          <span class="admin-username">({{ admin.username }})</span>
+        </div>
+        <div class="toggle-container mb-3 mt-4">
+          <label class="switch">
+            <input
+              type="checkbox"
+              (change)="onToggle(admin._id, admin)"
+              [checked]="admin.role === 1 ? true : false"
+            />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </app-modal>
 

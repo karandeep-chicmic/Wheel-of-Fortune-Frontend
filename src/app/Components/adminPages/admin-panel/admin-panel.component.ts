@@ -34,8 +34,6 @@ export class AdminPanelComponent implements OnInit {
   showModal: boolean = false;
   private searchSubject = new Subject<string>();
 
-  
-
   constructor() {}
   ngOnInit(): void {
     this.apiCalls.getGameDetails().subscribe({
@@ -70,7 +68,7 @@ export class AdminPanelComponent implements OnInit {
         distinctUntilChanged() // Only emit when the value changes
       )
       .subscribe((searchText) => {
-        this.getAdmin(10, 0, searchText);
+        this.getAdmin(5, 0, searchText);
         console.log(searchText);
       });
 
@@ -103,18 +101,27 @@ export class AdminPanelComponent implements OnInit {
     this.showModal = true;
   }
 
-  updateAdmin(admin: any) {
-    // Logic to update an admin
-    console.log('Update Admin clicked', admin);
+  updateAdmin(userId: any) {
+    this.apiCalls.updateRole(userId).subscribe({
+      next: (response: any) => {
+        this.getAdmin(5, 0);
+      },
+      error: (error) => {
+        this.getAdmin(5, 0);
+        this.sweetAlert.error(error.error.message);
+      },
+    });
   }
 
-  deleteAdmin(admin: any) {
-    // Logic to delete an admin
-    console.log('Delete Admin clicked', admin);
+  async addRole(userId: string) {
+    this.updateAdmin(userId);
+
+    this.showModal = false;
   }
 
   onToggle(userId: string, admin: any) {
     const previousRole = admin.role;
+    this.updateAdmin(userId);
     this.apiCalls.updateRole(userId).subscribe({
       next: (response: any) => {},
       error: (error) => {
@@ -140,6 +147,8 @@ export class AdminPanelComponent implements OnInit {
       this.router.navigate([`/${ROUTES_UI.SYMBOL_CREATE}`]);
     } else if (type === 3) {
       this.router.navigate([`/${ROUTES_UI.SYMBOL_UPDATE_OR_DELETE}`]);
+    } else if (type === 4) {
+      this.router.navigate([`/${ROUTES_UI.WHEEL_UPDATE_OR_DELETE}`]);
     }
   }
 }

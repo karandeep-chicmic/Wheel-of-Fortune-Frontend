@@ -15,6 +15,7 @@ import { AdminPanelComponent } from './Components/adminPages/admin-panel/admin-p
 import { CreateWheelComponent } from './Components/adminPages/create-wheel/create-wheel.component';
 import { CreateSymbolsComponent } from './Components/adminPages/create-symbols/create-symbols.component';
 import { UpdateOrDeleteSymbolComponent } from './Components/adminPages/update-or-delete-symbol/update-or-delete-symbol.component';
+import { UpdateOrDeleteWheelComponent } from './Components/adminPages/update-or-delete-wheel/update-or-delete-wheel.component';
 
 export const routes: Routes = [
   { path: ROUTES_UI.DEFAULT, pathMatch: 'full', redirectTo: ROUTES_UI.LOGIN },
@@ -65,6 +66,11 @@ export const routes: Routes = [
   {
     path: ROUTES_UI.SYMBOL_UPDATE_OR_DELETE,
     component: UpdateOrDeleteSymbolComponent,
+    canActivate: [canActivateAdmin],
+  },
+  {
+    path: ROUTES_UI.WHEEL_UPDATE_OR_DELETE,
+    component: UpdateOrDeleteWheelComponent,
     canActivate: [canActivateAdmin],
   },
   {

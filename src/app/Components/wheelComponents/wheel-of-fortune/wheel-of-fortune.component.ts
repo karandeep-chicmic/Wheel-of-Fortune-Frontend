@@ -84,6 +84,8 @@ export class WheelOfFortuneComponent implements OnInit {
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
   }
+
+
   spinWheel() {
     this.finalRotation = 0;
     const index = this.outcomes.indexOf(this.selectedOutcome);

@@ -1,0 +1,87 @@
+<div class="wheel-outer">
+  <div
+    class="big-wheel"
+    #wheel
+    [@spinState]="{
+      value: animationState,
+      params: { finalRotation: finalRotation }
+    }"
+  >
+    <div
+      *ngFor="let sector of bigWheel; let i = index"
+      class="big-sector"
+      [ngStyle]="{
+        background: i % 2 === 0 ? '#6e5555' : '#e1b4b4',
+        transform: getTransformStyle(i, 45),
+        'z-index': getZIndex(i, 1)
+      }"
+    >
+      <img [src]="'http://192.180.0.84:5000/' + sector.image" />
+    </div>
+  </div>
+
+  <div
+    class="small-wheel"
+    #wheel
+    [@spinStateSmallWheel]="{
+      value: animationStateSmallWheel,
+      params: { finalRotationSmallWheel: finalRotationSmallWheel }
+    }"
+  >
+    <div
+      *ngFor="let sector of smallWheel; let i = index"
+      class="small-sector"
+      [ngStyle]="{
+        background: i % 2 === 0 ? '#6e5555' : '#e1b4b4',
+        transform: getTransformStyle(i, 60),
+        'z-index': getZIndex(i, 10)
+      }"
+    >
+      <img [src]="'http://192.180.0.84:5000/' + sector.image" />
+    </div>
+  </div>
+
+  <div class="jackpot">
+    <span>Jackpot</span>
+    <div class="pointer"></div>
+  </div>
+</div>
+<div class="heading spin-wheel-btn">
+  <h1 class="p-1">Reward details</h1>
+  <div class="symbols">
+    <div class="symbols-details" *ngFor="let symbol of allSymbols">
+      <div class="">
+        <span>{{ symbol.name }}</span
+        ><br />
+        <span>{{ symbol.amountPayout * betAmount | number : "1.0-0" }}</span>
+      </div>
+      <div class="">
+        <img
+          class="symbol-image"
+          [src]="'http://192.180.0.84:5000/' + symbol.image"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="place-bet-details heading">
+  <h2>Place Bet</h2>
+  <input
+    [(ngModel)]="betAmount"
+    type="number"
+    class="form-control mb-2"
+    placeholder="Place a Bet"
+  />
+
+  <img
+    (click)="startTheSpin()"
+    class="auto-img mt-4"
+    src="spinBtn.jpg"
+  />
+  <!-- <button (click)="spinWheelInner()">Spin the Inner Wheel</button> -->
+</div>
+
+<div class="auto-btn">
+  <img class="auto-spin-img" src="autoSpin.png" alt="temp" (click)="autoBtn()">
+</div>

@@ -16,6 +16,7 @@ import { CreateWheelComponent } from './Components/adminPages/create-wheel/creat
 import { CreateSymbolsComponent } from './Components/adminPages/create-symbols/create-symbols.component';
 import { UpdateOrDeleteSymbolComponent } from './Components/adminPages/update-or-delete-symbol/update-or-delete-symbol.component';
 import { UpdateOrDeleteWheelComponent } from './Components/adminPages/update-or-delete-wheel/update-or-delete-wheel.component';
+import { WheelOfFortunePageComponent } from './Components/wheelComponents/wheel-of-fortune-page/wheel-of-fortune-page.component';
 
 export const routes: Routes = [
   { path: ROUTES_UI.DEFAULT, pathMatch: 'full', redirectTo: ROUTES_UI.LOGIN },
@@ -37,13 +38,18 @@ export const routes: Routes = [
     canActivate: [canActivateLogin],
   },
   {
-    path: ROUTES_UI.WHEEL_OF_FORTUNE,
+    path: ROUTES_UI.WHEEL_OF_FORTUNE_TEST,
     component: WheelOfFortuneComponent,
     canActivate: [canActivate],
   },
   {
     path: ROUTES_UI.WHEEL_LISTING_PAGE,
     component: WheelListingPageComponent,
+    canActivate: [canActivate],
+  },
+  {
+    path: ROUTES_UI.WHEEL_OF_FORTUNE,
+    component: WheelOfFortunePageComponent,
     canActivate: [canActivate],
   },
 

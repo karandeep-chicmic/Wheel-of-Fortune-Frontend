@@ -108,4 +108,11 @@ export class ApiCallsService {
       `${API_ROUTES.BASE_URL}${API_ROUTES.GET_GAME_DETAILS}`
     );
   }
+
+  // game play 
+  spinTheWheel(betAmount: number, wheelId: string){
+    return this.http.post(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.SPIN_THE_WHEEL}?wheelId=${wheelId}`,{betAmount}
+    );
+  }
 }

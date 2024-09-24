@@ -10,7 +10,19 @@
       locked: wheel.accessType !== 1
     }"
   >
-    <h3>{{ wheel.wheelName }}</h3>
+    <div class="name-toggle">
+      <h3>{{ wheel.wheelName }}</h3>
+      <div class="toggle-container mb-3 mt-4">
+        <label class="switch">
+          <input
+            type="checkbox"
+            (change)="onToggle(wheel._id, wheel.accessType)"
+            [checked]="wheel.accessType === 1 ? true : false"
+          />
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
     <p>{{ wheel.description }}</p>
     <span class="status">{{
       wheel.accessType === 1 ? "Unlocked" : "Locked"

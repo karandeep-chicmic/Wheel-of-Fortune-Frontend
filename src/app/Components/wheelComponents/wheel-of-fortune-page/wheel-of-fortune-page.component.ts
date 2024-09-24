@@ -11,11 +11,12 @@ import {
 import { CommonModule, JsonPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SweetAlertService } from '../../../services/sweet-alert.service';
+import { NavbarComponent } from '../../home/navbar/navbar.component';
 
 @Component({
   selector: 'app-wheel-of-fortune-page',
   standalone: true,
-  imports: [CommonModule, JsonPipe, FormsModule],
+  imports: [CommonModule, JsonPipe, FormsModule, NavbarComponent],
   templateUrl: './wheel-of-fortune-page.component.html',
   styleUrl: './wheel-of-fortune-page.component.css',
   animations: [
@@ -147,7 +148,7 @@ export class WheelOfFortunePageComponent implements OnInit {
         }
       },
       error: (error) => {
-        this.sweetAlert.error(error.message);
+        this.sweetAlert.error(error.error.message);
       }
     });
   }

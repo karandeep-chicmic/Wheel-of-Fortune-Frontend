@@ -9,7 +9,17 @@
   /* clip-path: polygon(50% 50%, 100% 0, 100% 100%);  */
   clip-path: polygon(50% 50%, 111.11% 61px, 92.93% 89.9%);
   transform-origin: 50% 50%;
+
+  img {
+    width: 27%;
+    height: 27%;
+    position: absolute;
+    bottom: 100px;
+    right: 9px;
+    rotate: 6deg;
+  }
 }
+
 .big-sector {
   position: absolute;
   top: 10;
@@ -19,12 +29,14 @@
   /* clip-path: polygon(50% 50%, 100% 0, 100% 100%);  */
   clip-path: polygon(50% 50%, 800.11% 61px, 92.93% 89.9%);
   transform-origin: 50% 50%;
+
   img {
-    width: 24%;
-    height: 42%;
+    width: 17%;
+    height: 17%;
     position: absolute;
-    bottom: 53px;
-    right: 9px;
+    bottom: 138px;
+    right: 18px;
+    rotate: 22deg;
   }
 }
 
@@ -41,7 +53,7 @@
   width: 300px;
   height: 300px;
   border-radius: 200px;
-  border: 0.5px solid rgb(107, 96, 96);
+  border: 10px solid rgb(111, 78, 78);
   overflow: hidden;
   margin-top: 100px;
   margin-left: 98px;
@@ -54,27 +66,44 @@
   width: 500px;
   height: 500px;
   border-radius: 900px;
-  border: 1px solid rgb(0, 0, 0);
+  border: 10px solid rgb(74, 54, 54);
   overflow: hidden;
 }
 
 .jackpot {
   position: fixed;
-  width: 100px; /* Adjust the size as needed */
+  width: 100px;
   height: 100px;
-  background-color: #615050; /* Choose your preferred color */
+  background-color: #461f1f;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white; /* Text color */
-  font-size: 24px;
+  color: white;
+  font-size: 20px;
   font-weight: bold;
-  border: 1px solid rgb(6, 5, 5); /* Optional border */
+  font-family: "Ribeye Marrow", serif;
+  font-weight: 400;
+  /* border: 1px solid rgb(6, 5, 5); */
   z-index: 15;
   margin-left: 194px;
   margin-top: 200px;
+}
+
+.pointer {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid #461f1f;
+  /* Same color as jackpot background */
+  top: -30px;
+  /* Adjust to position the pointer at the top */
+  left: 48%;
+  /* Center horizontally */
+  transform: translateX(-50%);
 }
 
 .heading {
@@ -86,9 +115,48 @@
 }
 
 .spin-wheel-btn {
-  margin-top: 580px;
-  margin-left: 680px;
-  align-items: center;
+  margin-left: 50px;
+  margin-top: 20px;
+
   position: fixed;
 }
 
+.symbols {
+  padding: 10px;
+  border-radius: 2%;
+  background-color: #272524;
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-color: black #514b4b;
+}
+
+.symbol-image {
+  height: 100px;
+  width: 100px;
+}
+
+input {
+  background-color: #c7b59e;
+  
+}
+
+.symbols-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.spin-wheel-btn-inner {
+  margin-left: 1130px;
+  margin-top: 10px;
+  position: fixed;
+}
+
+.save-wheel-btn {
+  margin-left: 50px;
+  margin-top: 550px;
+}
+
+textarea{
+  background-color: #c7b59e;
+  width: 100%;
+}

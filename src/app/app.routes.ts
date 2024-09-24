@@ -17,6 +17,7 @@ import { CreateSymbolsComponent } from './Components/adminPages/create-symbols/c
 import { UpdateOrDeleteSymbolComponent } from './Components/adminPages/update-or-delete-symbol/update-or-delete-symbol.component';
 import { UpdateOrDeleteWheelComponent } from './Components/adminPages/update-or-delete-wheel/update-or-delete-wheel.component';
 import { WheelOfFortunePageComponent } from './Components/wheelComponents/wheel-of-fortune-page/wheel-of-fortune-page.component';
+import { RtpPageComponent } from './Components/adminPages/rtp-page/rtp-page.component';
 
 export const routes: Routes = [
   { path: ROUTES_UI.DEFAULT, pathMatch: 'full', redirectTo: ROUTES_UI.LOGIN },
@@ -79,6 +80,13 @@ export const routes: Routes = [
     component: UpdateOrDeleteWheelComponent,
     canActivate: [canActivateAdmin],
   },
+  {
+    path: ROUTES_UI.RTP_PAGE,
+    component: RtpPageComponent,
+    canActivate: [canActivateAdmin],
+  },
+
+  // Wildcard Route
   {
     path: ROUTES_UI.WILDCARD_ROUTE,
     component: PageNotFoundComponent,

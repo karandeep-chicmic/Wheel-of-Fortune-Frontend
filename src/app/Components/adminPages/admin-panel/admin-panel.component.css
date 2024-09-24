@@ -1,79 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 /* admin-panel.component.css */
 .admin-panel {
-    background-color: black;
-    color: white;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .grid-container {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns for the sections */
-    gap: 20px;
-  }
-  
-  .stats-section {
-    grid-column: 1 / span 2; /* Spans across both columns */
-    display: flex;
-    justify-content: center; /* Aligns content in the center */
-    gap: 20px;
-    background-color: #333;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  .section {
-    background-color: #222;
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  .button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  button {
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #555;
-  }
-  /* Centering the image container on the page */
-.head-image-div {
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
-    /* height: 100vh;            */
-    background-color: black;
-  }
-  
-  .head-image {
-    /* max-width: 100%; */
-    height: auto;    /* Maintain aspect ratio */
-    border-radius: 8px; /* Optional: rounded corners */
-  }
+  background-color: black;
+  color: white;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
 
-  .heading{
-    font-family: "Playfair Display", serif;
-    font-optical-sizing: auto;
-    color: bisque;
-  }
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.grid-container {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Two columns for the sections */
+  gap: 20px;
+}
+
+.stats-section {
+  grid-column: 1 / span 2;
+  /* Spans across both columns */
+  display: flex;
+  justify-content: center;
+  /* Aligns content in the center */
+  gap: 20px;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.section {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Centering the image container on the page */
+.head-image-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh;            */
+  background-color: black;
+}
+
+.head-image {
+  /* max-width: 100%; */
+  height: auto;
+  /* Maintain aspect ratio */
+  border-radius: 8px;
+  /* Optional: rounded corners */
+}
+
+.heading {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  color: bisque;
+}
+
 /*   
   .admin-section{
     grid-column: 1 / span 2; 
@@ -90,122 +98,143 @@
     justify-content: space-evenly;
   } */
 
-  .admin-listing {
-    background-color: #000; /* Black background */
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  .admins {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1a1a1a; /* Dark gray for contrast */
-    border: 1px solid #444;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .admins:hover {
-    background-color: #333; /* Slightly lighter on hover */
-  }
-  
-  .admin-info {
-    color: #fff; /* White text */
-  }
-  
-  .admin-name {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .admin-email {
-    font-size: 14px;
-    color: #ccc; /* Light gray for email */
-  }
-  
-  .admin-username {
-    font-size: 14px;
-    color: #777; /* Gray for username */
-    margin-left: 5px;
-  }
+.admin-listing {
+  background-color: #000;
+  /* Black background */
+  padding: 20px;
+  border-radius: 10px;
+}
 
-  .toggle-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin-right: 10px; /* Adjust spacing between toggle and status text */
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 34px; /* Rounded corners for the track */
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%; /* Rounded corners for the slider */
-  }
-  
-  input:checked + .slider {
-    background-color:  #e67e22; /* Color when checked */
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px); /* Position of the slider when checked */
-  }
-  
-  .toggle-status {
-    font-size: 1rem; /* Adjust font size for status text */
-    font-weight: bold; /* Bold text for status */
-    color: #333; /* Text color */
-  }
-  .main-container {
-    overflow: auto;
-    height: 800px;
-  }
+.admins {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  /* Dark gray for contrast */
+  border: 1px solid #444;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
 
-  .dropdown-menu {
-    border: 1px solid #ccc;
-    max-height: 200px;
-    overflow-y: auto;
-    width: 100%;
-  }
-  
-  .dropdown-item {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #f0f0f0;
-  }
-  
+.admins:hover {
+  background-color: #333;
+  /* Slightly lighter on hover */
+}
+
+.admin-info {
+  color: #fff;
+  /* White text */
+}
+
+.admin-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.admin-email {
+  font-size: 14px;
+  color: #ccc;
+  /* Light gray for email */
+}
+
+.admin-username {
+  font-size: 14px;
+  color: #777;
+  /* Gray for username */
+  margin-left: 5px;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-right: 10px;
+  /* Adjust spacing between toggle and status text */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+  /* Rounded corners for the track */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  /* Rounded corners for the slider */
+}
+
+input:checked+.slider {
+  background-color: #e67e22;
+  /* Color when checked */
+}
+
+input:checked+.slider:before {
+  transform: translateX(26px);
+  /* Position of the slider when checked */
+}
+
+.toggle-status {
+  font-size: 1rem;
+  /* Adjust font size for status text */
+  font-weight: bold;
+  /* Bold text for status */
+  color: #333;
+  /* Text color */
+}
+
+.main-container {
+  overflow: auto;
+  height: 800px;
+}
+
+.dropdown-menu {
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.global {
+  display: flex;
+  justify-content: space-around;
+  border: solid #555;
+  border-radius: 5%;
+}

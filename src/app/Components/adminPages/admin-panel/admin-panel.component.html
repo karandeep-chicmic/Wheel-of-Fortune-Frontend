@@ -12,10 +12,10 @@
   <div class="grid-container">
     <!-- First Row: Statistics Section -->
     <div class="stats-section">
-      <span>Total Wins: {{ totalWins }}</span>
-      <span>Total Loses: {{ totalLosses }}</span>
-      <span>Admin Income: {{ adminIncome }}</span>
-      <span>Total Games: {{ totalGames }} </span>
+      <span>Total Wins: {{ totalWins | number : "1.0-0" }}</span>
+      <span>Total Loses: {{ totalLosses | number : "1.0-0" }}</span>
+      <span>Admin Income: {{ adminIncome | number : "1.0-0" }}</span>
+      <span>Total Games: {{ totalGames | number : "1.0-0" }} </span>
     </div>
 
     <!-- Second Row: Symbols and Wheels Section -->
@@ -38,10 +38,24 @@
     <!-- Third Row: RTP and Transaction Sections -->
     <div class="section rtp-section">
       <h3>RTP Controls</h3>
-      <div class="button-group">
-        <span>GLOBAL RTP: </span>
-        <button>Increase RTP</button>
-        <button>Decrease RTP</button>
+      <div class="button-group mt-4">
+        <button (click)="navigateToPage(5)">Increase or Decrease RTP</button>
+        <div class="global">
+          <div class="global-rtp mt-4 ">
+            <span>global rtp</span>
+          </div>
+          <div class="toggle-container mb-3 mt-4">
+            <label class="switch">
+              <input
+                type="checkbox"
+                [checked]="true"
+              />
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+
+        </div>
       </div>
     </div>
 

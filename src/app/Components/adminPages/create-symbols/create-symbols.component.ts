@@ -28,10 +28,9 @@ export class CreateSymbolsComponent {
   activateRoute: ActivatedRoute = inject(ActivatedRoute);
 
   symbolTypes = [
-    { name: 'Arrow', value: 1 },
-    { name: 'Circle', value: 2 },
-    { name: 'Square', value: 3 },
-    { name: 'Triangle', value: 4 },
+    { name: 'Loss', value: 1 },
+    { name: 'Win', value: 2 },
+    { name: 'Arrow', value: 3 },
   ];
 
   searchedText: string = '';

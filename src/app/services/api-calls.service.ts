@@ -10,7 +10,7 @@ import { symbols } from '../interfaces/symbol.interface';
 export class ApiCallsService {
   http: HttpClient = inject(HttpClient);
 
-  constructor() {}
+  constructor() { }
 
   // userAuth
   loginUser(userData: user) {
@@ -101,6 +101,18 @@ export class ApiCallsService {
       `${API_ROUTES.BASE_URL}${API_ROUTES.WHEELS}/${wheelId}`
     );
   }
+  updateWheel(wheelDetails: any, wheelId: string) {
+    return this.http.put(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.WHEELS}?id=${wheelId}`,
+      wheelDetails
+    );
+  }
+  createWheel(wheelDetails: any) {
+    return this.http.post(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.WHEELS}`,
+      wheelDetails
+    );
+  }
 
   // admin apis
   getGameDetails() {
@@ -110,9 +122,9 @@ export class ApiCallsService {
   }
 
   // game play 
-  spinTheWheel(betAmount: number, wheelId: string){
+  spinTheWheel(betAmount: number, wheelId: string) {
     return this.http.post(
-      `${API_ROUTES.BASE_URL}${API_ROUTES.SPIN_THE_WHEEL}?wheelId=${wheelId}`,{betAmount}
+      `${API_ROUTES.BASE_URL}${API_ROUTES.SPIN_THE_WHEEL}?wheelId=${wheelId}`, { betAmount }
     );
   }
 }

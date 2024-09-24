@@ -39,20 +39,38 @@ export class UpdateOrDeleteWheelComponent {
     });
   }
 
-  deleteWheel(wheelId: string){
+  deleteWheel(wheelId: string) {
     this.sweetAlert.deleteMessage().then((result: any) => {
       if (result.isConfirmed) {
         this.apiCalls.deleteWheel(wheelId).subscribe({
           next: (data: any) => {
 
             this.sweetAlert.success(`Delete wheel with ID: ${wheelId}`);
-
+            this.wheelsData = this.wheelsData.filter((data: any) => String(data._id) !== String(wheelId))
           },
           error: (error) => {
-            this.sweetAlert.success(error.message.message);
+            this.sweetAlert.error(error.error.message);
           },
         });
       }
     });
+  }
+
+  onToggle(wheelId: string, accessType: number) {
+    this.apiCalls.updateWheel({ accessType: (accessType === 1 ? 2 : 1) }, wheelId).subscribe({
+      next: (data: any) => {
+        
+        this.wheelsData.forEach((element: any, idx: number, arr: any) => {
+
+          if (String(element._id) === String(wheelId)) {
+            arr[idx].accessType = (accessType === 1 ? 2 : 1);
+          }
+
+        });
+      },
+      error: (error) => {
+        this.sweetAlert.error(error.error.message);
+      },
+    })
   }
 }

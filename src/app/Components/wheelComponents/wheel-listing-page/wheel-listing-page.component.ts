@@ -4,11 +4,12 @@ import { SweetAlertService } from '../../../services/sweet-alert.service';
 import { MESSAGES } from '../../../constants';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { NavbarComponent } from '../../home/navbar/navbar.component';
 
 @Component({
   selector: 'app-wheel-listing-page',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NavbarComponent],
   templateUrl: './wheel-listing-page.component.html',
   styleUrl: './wheel-listing-page.component.css',
 })

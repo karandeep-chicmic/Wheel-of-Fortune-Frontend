@@ -44,10 +44,15 @@ export class UpdateOrDeleteSymbolComponent implements OnInit {
     this.sweetAlert.deleteMessage().then((result: any) => {
       if (result.isConfirmed) {
         this.apiCalls.deleteSymbol(symbolId).subscribe({
-          next: (data: any) => {},
-          error: (error) => {},
+          next: (data: any) => {
+            this.sweetAlert.success(`Delete symbol with ID: ${symbolId}`);
+            
+
+          },
+          error: (error) => {
+            this.sweetAlert.error(error.error.message);
+          },
         });
-        this.sweetAlert.success(`Delete symbol with ID: ${symbolId}`);
       }
     });
     console.log('Delete symbol with ID:', symbolId);

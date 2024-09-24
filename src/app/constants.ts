@@ -22,6 +22,7 @@ export const ROUTES_UI = {
   SYMBOL_UPDATE_OR_DELETE: 'updateOrDelete',
   WHEEL_UPDATE_OR_DELETE: 'updateWheel',
   WHEEL_OF_FORTUNE_TEST: 'testWheel',
+  RTP_PAGE: "rtpPage"
 };
 
 export const API_ROUTES = {
@@ -45,6 +46,9 @@ export const MESSAGES = {
     CANT_GET_WHEEL: 'error getting wheel',
   },
   SYMBOL_CREATED: 'Symbol Created Successfully',
+  FILL_WHEEL: "Fill the whole Wheel",
+  INVALID_FORM: "Fill Form Details Correctly",
+  FIRST_REMOVE: "First remove one item from wheel to add more !!"
 };
 
 export const ROLES = {

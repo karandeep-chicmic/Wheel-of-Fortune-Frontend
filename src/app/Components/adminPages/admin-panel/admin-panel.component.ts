@@ -34,7 +34,7 @@ export class AdminPanelComponent implements OnInit {
   showModal: boolean = false;
   private searchSubject = new Subject<string>();
 
-  constructor() {}
+  constructor() { }
   ngOnInit(): void {
     this.apiCalls.getGameDetails().subscribe({
       next: (response: any) => {
@@ -123,7 +123,7 @@ export class AdminPanelComponent implements OnInit {
     const previousRole = admin.role;
     this.updateAdmin(userId);
     this.apiCalls.updateRole(userId).subscribe({
-      next: (response: any) => {},
+      next: (response: any) => { },
       error: (error) => {
         this.getAdmin(5, 0);
         this.sweetAlert.error(error.error.message);
@@ -149,6 +149,8 @@ export class AdminPanelComponent implements OnInit {
       this.router.navigate([`/${ROUTES_UI.SYMBOL_UPDATE_OR_DELETE}`]);
     } else if (type === 4) {
       this.router.navigate([`/${ROUTES_UI.WHEEL_UPDATE_OR_DELETE}`]);
+    } else if (type === 5) {
+      this.router.navigate([`/${ROUTES_UI.RTP_PAGE}`]);
     }
   }
 }

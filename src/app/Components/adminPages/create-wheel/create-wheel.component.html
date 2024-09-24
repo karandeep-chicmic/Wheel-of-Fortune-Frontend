@@ -1,107 +1,83 @@
+<app-navbar></app-navbar>
 
-<div class="heading"><h1>Create Wheel</h1></div>
-
-
-<div class="wheel-outer">
-  <div class="big-wheel">
-    <div class="big-sector" style="transform: rotate(0deg); z-index: 1">
-      <img
-        src="https://img.freepik.com/free-psd/kanzashi-japanese-hair-ornament-jewellery-isolated-transparent-background_191095-27064.jpg?size=626&ext=jpg"
-      />
-    </div>
-    <div
-      class="big-sector"
-      style="background: #6e5555; transform: rotate(45deg); z-index: 2"
-    >
-      <img
-        src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=600"
-      />
-    </div>
-    <div
-      class="big-sector"
-      style="background: #e1b4b4; transform: rotate(90deg); z-index: 3"
-    >
-      <img
-        src="https://img.freepik.com/free-psd/kanzashi-japanese-hair-ornament-jewellery-isolated-transparent-background_191095-27064.jpg?size=626&ext=jpg"
-      />
-    </div>
-    <div
-      class="big-sector"
-      style="background: #6e5555; transform: rotate(135deg); z-index: 4"
-    >
-      <img
-        src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=600"
-      />
-    </div>
-    <div
-      class="big-sector"
-      style="background: #e1b4b4; transform: rotate(180deg); z-index: 5"
-    >
-      <img
-        src="https://img.freepik.com/free-psd/kanzashi-japanese-hair-ornament-jewellery-isolated-transparent-background_191095-27064.jpg?size=626&ext=jpg"
-      />
-    </div>
-    <div
-      class="big-sector"
-      style="background: #6e5555; transform: rotate(225deg); z-index: 6"
-    >
-      <img
-        src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=600"
-      />
-    </div>
-    <div
-      class="big-sector"
-      style="background: #e1b4b4; transform: rotate(270deg); z-index: 7"
-    >
-      <img
-        src="https://img.freepik.com/free-psd/kanzashi-japanese-hair-ornament-jewellery-isolated-transparent-background_191095-27064.jpg?size=626&ext=jpg"
-      />
-    </div>
-    <div
-      class="big-sector"
-      style="background: #6e5555; transform: rotate(315deg); z-index: 8"
-    >
-      <img
-        src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=600"
-      />
-    </div>
-  </div>
-
-  <div class="small-wheel">
-    <div
-      class="small-sector"
-      style="background: #e1b4b4; transform: rotate(0deg); z-index: 9"
-    ></div>
-    <div
-      class="small-sector"
-      style="background: #6e5555; transform: rotate(60deg); z-index: 10"
-    ></div>
-    <div
-      class="small-sector"
-      style="background: #e1b4b4; transform: rotate(120deg); z-index: 11"
-    ></div>
-    <div
-      class="small-sector"
-      style="background: #6e5555; transform: rotate(180deg); z-index: 12"
-    ></div>
-    <div
-      class="small-sector"
-      style="background: #e1b4b4; transform: rotate(240deg); z-index: 13"
-    ></div>
-    <div
-      class="small-sector"
-      style="background: #6e5555; transform: rotate(300deg); z-index: 14"
-    ></div>
-  </div>
-
-  <div class="jackpot">
-    <span>Jackpot</span>
-  </div>
-
-
-
+<div class="heading">
+  <h3>{{headingText}} Wheel</h3>
 </div>
-<div class="heading spin-wheel-btn">
-  <button class="btn btn-secondary">Save Wheel</button>
-</div>
-<div class="inputs"></div>
+
+<form [formGroup]="wheelForm" (ngSubmit)="onSubmit()">
+
+  <div class="wheel-outer">
+    <div class="big-wheel" #wheel>
+      <div *ngFor="let sector of bigWheel; let i = index" class="big-sector" [ngStyle]="{
+        background: i % 2 === 0 ? '#6e5555' : '#e1b4b4',
+        transform: getTransformStyle(i, 45),
+        'z-index': getZIndex(i, 1)
+      }">
+        <img [src]="'http://192.180.0.84:5000/' + sector.image" />
+      </div>
+    </div>
+
+    <div class="small-wheel" #wheel>
+      <div *ngFor="let sector of smallWheel; let i = index" class="small-sector" [ngStyle]="{
+        background: i % 2 === 0 ? '#6e5555' : '#e1b4b4',
+        transform: getTransformStyle(i, 60),
+        'z-index': getZIndex(i, 10)
+      }">
+        <img [src]="'http://192.180.0.84:5000/' + sector.image" />
+      </div>
+    </div>
+
+    <div class="jackpot">
+      <span>Jackpot</span>
+      <div class="pointer"></div>
+    </div>
+  </div>
+
+  <div class="heading spin-wheel-btn">
+    <h3 class="p-1">Outer Wheel</h3>
+    <div class="symbols">
+      <div class="symbols-details" *ngFor="let symbol of allSymbols">
+        <div (click)="addToOuterWheel(symbol, 1)">
+          <span>{{ symbol.name }}</span><br />
+          <span>{{ symbol.amountPayout }}</span><br />
+        </div>
+        <div (click)="addToOuterWheel(symbol,1)">
+          <img class="symbol-image" [src]="'http://192.180.0.84:5000/' + symbol.image" />
+        </div>
+      </div>
+
+    </div>
+    <div class="delete-btn mt-3">
+      <button type="button" class="btn btn-secondary" (click)="deleteLastSymbol(1)"> Delete Last Symbol</button>
+    </div>
+    <h3 class="mt-5">Wheel Name</h3>
+    <input formControlName="wheelName" placeholder="wheel name">
+  </div>
+
+
+  <div class="heading spin-wheel-btn-inner">
+    <h3 class="p-1">Inner Wheel</h3>
+    <div class="symbols">
+      <div class="symbols-details" *ngFor="let symbol of allSymbols">
+        <div (click)="addToOuterWheel(symbol,2)">
+          <span>{{ symbol.name }}</span><br />
+          <span>{{ symbol.amountPayout }}</span><br />
+        </div>
+        <div (click)="addToOuterWheel(symbol,2)">
+          <img class="symbol-image" [src]="'http://192.180.0.84:5000/' + symbol.image" />
+        </div>
+      </div>
+    </div>
+    <div class="delete-btn mt-3">
+      <button type="button" class="btn btn-secondary" (click)="deleteLastSymbol(2)"> Delete Last Symbol</button>
+    </div>
+
+    <h3 class="mt-5">Wheel Description</h3>
+    <textarea formControlName="description" placeholder="wheel description"></textarea>
+  </div>
+
+  <div class="heading save-wheel-btn">
+    <button class="btn btn-secondary">Save Wheel</button>
+  </div>
+
+</form>

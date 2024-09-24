@@ -41,3 +41,75 @@
   justify-content: flex-start;
   gap: 12px;
 }
+
+.name-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align vertically to the center */
+  margin-bottom: 10px;
+}
+
+.name-toggle h3 {
+  margin: 0; /* Remove default margin for better alignment */
+}
+
+.name-toggle div {
+  margin: 0;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-right: 10px; /* Adjust spacing between toggle and status text */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px; /* Rounded corners for the track */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%; /* Rounded corners for the slider */
+}
+
+input:checked + .slider {
+  background-color:  #22e62c; /* Color when checked */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px); /* Position of the slider when checked */
+}
+
+.toggle-status {
+  font-size: 1rem; /* Adjust font size for status text */
+  font-weight: bold; /* Bold text for status */
+  color: #333; /* Text color */
+}

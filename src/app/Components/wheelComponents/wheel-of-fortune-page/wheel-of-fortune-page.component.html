@@ -1,4 +1,8 @@
 <app-navbar></app-navbar>
+<div class="credit-box heading">
+  <h3>Your Credits</h3>
+  <div class="credit-amount">{{ userBalance.credits | currency: 'INR' : 'symbol' }}</div>
+</div>
 
 <div class="wheel-outer">
   <div

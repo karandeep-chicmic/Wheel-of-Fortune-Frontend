@@ -70,6 +70,8 @@ export class WheelOfFortunePageComponent implements OnInit {
   indexOuter: number = 1;
   indexInner: number = 1;
 
+  userBalance: any;
+
 
   animationState = 'idle';
   animationStateSmallWheel = 'idle';
@@ -82,6 +84,17 @@ export class WheelOfFortunePageComponent implements OnInit {
   ngOnInit(): void {
 
     this.selectedWheelId = this.route.snapshot.params?.['wheelId']
+    this.apiCalls.getWalletBalance(sessionStorage.getItem("userId") ?? "").subscribe({
+      next: (data: any) => {
+        this.userBalance = data.data
+        console.log(data.data);
+
+      },
+      error: (error) => {
+        this.sweetAlert.error(error.error.message);
+      }
+    })
+
     this.apiCalls
       .findWheelById(this.selectedWheelId)
       .subscribe({
@@ -127,6 +140,9 @@ export class WheelOfFortunePageComponent implements OnInit {
         if (res.data.outcome.length === 1) {
           this.spinWheel(res.data.outcome[0]);
 
+          setTimeout(() => {
+            this.userBalance.credits = (this.userBalance.credits - this.betAmount) + res.data.outcomeAmount
+          }, 5000);
         } else if (res.data.outcome.length === 2) {
 
           this.spinWheel(res.data.outcome[0]);
@@ -134,6 +150,10 @@ export class WheelOfFortunePageComponent implements OnInit {
           setTimeout(() => {
             this.spinWheelInner(res.data.outcome[1])
           }, 5000);
+
+          setTimeout(() => {
+            this.userBalance.credits = (this.userBalance.credits - this.betAmount) + res.data.outcomeAmount
+          }, 10000);
 
         } else if (res.data.outcome.length === 3) {
           this.spinWheel(res.data.outcome[0]);
@@ -145,6 +165,10 @@ export class WheelOfFortunePageComponent implements OnInit {
           setTimeout(() => {
             this.sweetAlert.success("JACKPOT")
           }, 10000);
+
+          setTimeout(() => {
+            this.userBalance.credits = (this.userBalance.credits - this.betAmount) + res.data.outcomeAmount 
+          }, 15000);
         }
       },
       error: (error) => {

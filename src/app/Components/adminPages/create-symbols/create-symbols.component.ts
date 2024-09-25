@@ -12,11 +12,12 @@ import { ApiCallsService } from '../../../services/api-calls.service';
 import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { API_ROUTES, MESSAGES, ROUTES_UI } from '../../../constants';
+import { NavbarComponent } from '../../home/navbar/navbar.component';
 
 @Component({
   selector: 'app-create-symbols',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, NavbarComponent],
   templateUrl: './create-symbols.component.html',
   styleUrl: './create-symbols.component.css',
 })

@@ -19,7 +19,8 @@ export class NavbarComponent implements OnInit {
   apiCalls: ApiCallsService = inject(ApiCallsService);
   router: Router = inject(Router);
   showNavbarMain: boolean = true;
-  
+  adminOrNot: boolean = false
+
 
   userId: string = '';
   ngOnInit(): void {
@@ -27,13 +28,20 @@ export class NavbarComponent implements OnInit {
       this.showNavbarMain = data;
     });
 
+    if (sessionStorage.getItem("role") === "1") {
+      this.adminOrNot = true
+    }
     this.userId = sessionStorage.getItem('userId') ?? '';
   }
 
   logoutUser() {
-    
+
     sessionStorage.clear();
-    
+
     this.router.navigate([ROUTES_UI.LOGIN]);
+  }
+
+  addMoneyPage() {
+    this.router.navigate([ROUTES_UI.ADD_MONEY])
   }
 }

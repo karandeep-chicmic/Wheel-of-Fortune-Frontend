@@ -18,6 +18,8 @@ import { UpdateOrDeleteSymbolComponent } from './Components/adminPages/update-or
 import { UpdateOrDeleteWheelComponent } from './Components/adminPages/update-or-delete-wheel/update-or-delete-wheel.component';
 import { WheelOfFortunePageComponent } from './Components/wheelComponents/wheel-of-fortune-page/wheel-of-fortune-page.component';
 import { RtpPageComponent } from './Components/adminPages/rtp-page/rtp-page.component';
+import { AddMoneyPageComponent } from './Components/transaction/add-money-page/add-money-page.component';
+import { CreditsRequestPageComponent } from './Components/transaction/credits-request-page/credits-request-page.component';
 
 export const routes: Routes = [
   { path: ROUTES_UI.DEFAULT, pathMatch: 'full', redirectTo: ROUTES_UI.LOGIN },
@@ -51,6 +53,16 @@ export const routes: Routes = [
   {
     path: ROUTES_UI.WHEEL_OF_FORTUNE,
     component: WheelOfFortunePageComponent,
+    canActivate: [canActivate],
+  },
+  {
+    path: ROUTES_UI.ADD_MONEY,
+    component: AddMoneyPageComponent,
+    canActivate: [canActivate],
+  },
+  {
+    path: ROUTES_UI.CREDITS_REQUESTS,
+    component: CreditsRequestPageComponent,
     canActivate: [canActivate],
   },
 

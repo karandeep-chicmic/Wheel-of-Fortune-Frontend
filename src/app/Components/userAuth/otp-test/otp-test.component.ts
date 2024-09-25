@@ -10,7 +10,7 @@ import {
 import { ApiCallsService } from '../../../services/api-calls.service';
 import { Router } from '@angular/router';
 
-import { ROUTES_UI } from '../../../constants';
+import { FREE_CREDITS, MESSAGES, ROUTES_UI } from '../../../constants';
 import { CommonFunctionsAndVarsService } from '../../../services/common-functions-and-vars.service';
 import { SweetAlertService } from '../../../services/sweet-alert.service';
 
@@ -70,9 +70,21 @@ export class OtpTestComponent implements OnInit {
           sessionStorage.setItem('userId', res.data.userId);
           sessionStorage.setItem('role', res.data.role);
 
-          this.sweetAlert.success(res.message);
-          this.commonFunctions.showNavbar.next(true);
-          this.router.navigate([ROUTES_UI.WHEEL_LISTING_PAGE]);
+          this.apiCalls.createTransaction({
+            amount: FREE_CREDITS,
+            paymentType: 0,
+            approved: true
+          }, res.data.userId).subscribe({
+            next: (res: any) => {
+              this.sweetAlert.success(res.message);
+              this.commonFunctions.showNavbar.next(true);
+              this.router.navigate([ROUTES_UI.WHEEL_LISTING_PAGE]);
+            },
+            error: (err) => {
+              this.sweetAlert.error(MESSAGES.ERROR_MESSAGES.FAILURE);
+            }
+          })
+
         },
         error: (err) => {
           console.log('ERROR is:', err);

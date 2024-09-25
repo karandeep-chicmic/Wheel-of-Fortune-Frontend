@@ -1,1 +1,20 @@
 <app-navbar></app-navbar>
+<div class="container">
+    <div class="form-container">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="input-group">
+                <input type="text" placeholder="Set Global RTP" class="form-input" formControlName="rtpPercentage" />
+            </div>
+            <div class="button-group">
+                <button type="submit" class="submit-button">Set</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="list-users-container">
+        <button class="list-button" (click)="allUser()">Set user specific RTP </button>
+    </div>
+</div>
+
+
+<app-modal [isVisible]="isVisible"></app-modal>

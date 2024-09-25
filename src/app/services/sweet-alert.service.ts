@@ -61,8 +61,8 @@ export class SweetAlertService {
     });
   }
 
-  deleteMessage(): any{
-    return  Swal.fire({
+  deleteMessage(): any {
+    return Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
@@ -70,7 +70,15 @@ export class SweetAlertService {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!"
-    }) ;
+    });
   }
-  constructor() {}
+
+  promptMessage(): any {
+    return Swal.fire({
+      title: "Are you sure to request credits(you will have to return the credits with interest of 10%)?",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+    })
+  }
+  constructor() { }
 }

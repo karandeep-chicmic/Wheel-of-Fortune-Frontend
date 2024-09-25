@@ -32,20 +32,34 @@ export class AdminPanelComponent implements OnInit {
   adminDetails: any = [];
   userSearchDetails: any = [];
   showModal: boolean = false;
+  globalRtp: boolean = false;
   private searchSubject = new Subject<string>();
 
   constructor() { }
   ngOnInit(): void {
+
+    this.apiCalls.getGlobalRtp().subscribe({
+      next: (response: any) => {
+
+        this.globalRtp = response.data.globalRtp
+
+      },
+      error: (error: any) => {
+        this.globalRtp = false
+      }
+    })
+
+
     this.apiCalls.getGameDetails().subscribe({
       next: (response: any) => {
-        console.log(response.data);
+
         this.gameDetails = response.data;
         this.totalWins = this.gameDetails[0].winOrLoss.find(
           (win: any) => win._id === 1
-        ).count;
+        )?.count;
         this.totalLosses = this.gameDetails[0].winOrLoss.find(
           (lose: any) => lose._id === 2
-        ).count;
+        )?.count;
 
         this.totalGames = this.totalWins + this.totalLosses;
 
@@ -69,7 +83,7 @@ export class AdminPanelComponent implements OnInit {
       )
       .subscribe((searchText) => {
         this.getAdmin(5, 0, searchText);
-        console.log(searchText);
+
       });
 
     this.getAdmin(5, 0);
@@ -119,6 +133,17 @@ export class AdminPanelComponent implements OnInit {
     this.showModal = false;
   }
 
+  updateGlobalRtp() {
+    this.apiCalls.setGlobalRtp().subscribe({
+      next: (response: any) => {
+
+      },
+      error: (error) => {
+        this.sweetAlert.error(error.error.message);
+      }
+    })
+  }
+
   onToggle(userId: string, admin: any) {
     const previousRole = admin.role;
     this.updateAdmin(userId);
@@ -151,6 +176,10 @@ export class AdminPanelComponent implements OnInit {
       this.router.navigate([`/${ROUTES_UI.WHEEL_UPDATE_OR_DELETE}`]);
     } else if (type === 5) {
       this.router.navigate([`/${ROUTES_UI.RTP_PAGE}`]);
+    } else if (type === 6) {
+      this.router.navigate([`/${ROUTES_UI.ADD_MONEY}`]);
+    } else if(type === 7){
+      this.router.navigate([`/${ROUTES_UI.CREDITS_REQUESTS}`]);
     }
   }
 }

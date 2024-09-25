@@ -48,7 +48,8 @@
             <label class="switch">
               <input
                 type="checkbox"
-                [checked]="true"
+                [checked]="globalRtp"
+                (change)="updateGlobalRtp()"
               />
               <span class="slider round"></span>
             </label>
@@ -62,9 +63,10 @@
     <div class="section transactions-section">
       <h3>Transaction Details</h3>
       <div class="button-group">
+        <button (click)="navigateToPage(6)">Add Company Money</button>
         <button>Show All Transactions</button>
         <button>Give Free Credits</button>
-        <button>Credits Details</button>
+        <button (click)="navigateToPage(7)">Credits Requests</button>
       </div>
     </div>
 

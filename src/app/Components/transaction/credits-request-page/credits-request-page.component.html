@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<div class="table-container mt-4">
+    <h2 *ngIf="isAdmin()">Admin Dashboard - Credit Requests</h2>
+    <h2 *ngIf="!isAdmin()">Your Credit Requests</h2>
+  
+    <table class="credit-table" [@fadeInTable]>
+      <thead>
+        <tr>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Created At</th>
+          <th *ngIf="isAdmin()">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of creditRequests" [@fadeInRow]>
+            <td>{{ request.amount | currency: 'INR' : 'symbol' }}</td>
+
+          <td>
+            <span [ngClass]="{ 'pending': !request.approved, 'completed': request.approved }">
+              {{ request.approved ? 'Completed' : 'Pending' }}
+            </span>
+          </td>
+          <td>{{ request.createdAt | date: 'short' }}</td>
+  
+          <!-- Show Approve Button if Admin -->
+          <td *ngIf="isAdmin()">
+            <button 
+              class="approve-btn" 
+              *ngIf="!request.approved"
+              (click)="approveRequest(request)">
+              Approve
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -117,14 +117,14 @@
 
 .place-bet-details {
   margin-left: 1070px;
-  margin-top: 200px;
+  margin-top: 150px;
   position: fixed;
 }
 .symbols {
-  padding: 10px;
+  padding: 2px;
   border-radius: 2%;
   background-color: #272524;
-  max-height: 600px;
+  max-height: 580px;
   overflow-y: auto;
   scrollbar-color: black #514b4b;
 }
@@ -141,7 +141,7 @@ input {
 }
 .auto-btn {
   margin-left: 1020px;
-  margin-top: 530px;
+  margin-top: 480px;
 }
 .auto-img{
   position: fixed;
@@ -153,4 +153,35 @@ input {
   width: 115px;
   height: 115px;
 
+}
+
+.credit-box {
+  display: flex;
+  background-color: #1a1a1a; 
+  margin-left: auto;
+  margin-right: 20px;
+  color: white; 
+  border-radius: 10px;
+  
+  width: 200px;  
+  
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); 
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05); 
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #d1c3ac;  
+  }
+
+  .credit-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #28a745;  
+  }
 }

@@ -1,0 +1,61 @@
+.table-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+  }
+  
+  .credit-table {
+    width: 100%;
+    border-collapse: collapse;
+    animation: fadeInTable 0.5s ease-in-out;
+  
+    th {
+      text-align: left;
+      padding: 10px;
+      background-color: #333;
+    }
+  
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+      text-align: left;
+    }
+  
+    .approve-btn {
+      padding: 8px 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      
+      &:hover {
+        background-color: #218838;
+      }
+    }
+  
+    .pending {
+      color: #f39c12;
+      font-weight: bold;
+    }
+  
+    .completed {
+      color: #28a745;
+      font-weight: bold;
+    }
+  }
+  
+  @keyframes fadeInTable {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

@@ -127,4 +127,32 @@ export class ApiCallsService {
       `${API_ROUTES.BASE_URL}${API_ROUTES.SPIN_THE_WHEEL}?wheelId=${wheelId}`, { betAmount }
     );
   }
+
+  // rtp global
+  setGlobalRtp(rtpPercentage?: number) {
+    return this.http.post(
+      `${API_ROUTES.BASE_URL}${API_ROUTES.GLOBAL_RTP}`, { rtpPercentage: rtpPercentage }
+    );
+  }
+  getGlobalRtp() {
+    return this.http.get(`${API_ROUTES.BASE_URL}${API_ROUTES.GLOBAL_RTP}`);
+  }
+
+  // wallet and transactions
+  getWalletBalance(userId: string) {
+    return this.http.get(`${API_ROUTES.BASE_URL}${API_ROUTES.GET_WALLET_BALANCE}/${userId}`)
+  }
+  createTransaction(transactionDetails: any, userId: any) {
+    return this.http.post(`${API_ROUTES.BASE_URL}${API_ROUTES.CREATE_TRANSACTION}?userId=${userId}`, transactionDetails)
+  }
+  getTransactions(userId: string, index?: number, limit?: number) {
+    return this.http.get(`${API_ROUTES.BASE_URL}${API_ROUTES.CREATE_TRANSACTION}?userId=${userId}&index=${index}&limit=${limit}`)
+  }
+  updateTransaction(transactionDetails: any, userId: any, id: string) {
+    return this.http.put(`${API_ROUTES.BASE_URL}${API_ROUTES.CREATE_TRANSACTION}?userId=${userId}&id=${id}`, transactionDetails)
+  }
+  getCredits(limit?:number, index?:number){
+    return this.http.get(`${API_ROUTES.BASE_URL}${API_ROUTES.CREDITS}?index=${index}&limit=${limit}`)
+  }
+
 }

@@ -19,6 +19,8 @@ export class WheelListingPageComponent implements OnInit {
   wheelsData: any;
 
   ngOnInit(): void {
+    
+
     this.apiCalls.getWheelData().subscribe({
       next: (data: any) => {
         console.log(data);

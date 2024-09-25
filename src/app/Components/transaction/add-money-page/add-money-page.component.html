@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+
+<div *ngIf="!admin" class="container">
+    <div  class="container-free-credits">
+        <button class="btn free-credits" (click)="requestFreeCredits()">Request Credits</button>
+    </div>
+</div>
+
+<div class="wallet-page-container">
+    <!-- Wallet Section with Animated Card -->
+    <section class="wallet-card">
+        <div class="wallet-balance">
+            <h2>₹ {{ walletBalance | number:'1.2-2' }}</h2>
+        </div>
+        <p class="wallet-details">Total Balance</p>
+    </section>
+
+    <!-- Money Operations Section -->
+    <section class="money-operations">
+        <input type="number" placeholder="Enter Amount" class="amount-input" [(ngModel)]="amount" />
+        <div class="button-container">
+            <div class="add-div">
+                <button class="btn add-money" (click)="addMoney()">Add Money</button>
+            </div>
+            <div class="">
+                <button class="btn withdraw-money" (click)="withdrawMoney()">Withdraw</button>
+            </div>
+        </div>
+    </section>
+</div>
